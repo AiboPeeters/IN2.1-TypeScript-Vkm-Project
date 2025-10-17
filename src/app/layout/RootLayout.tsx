@@ -8,13 +8,17 @@ export default function RootLayout() {
                 <div className="nav-links">
                     <NavLink
                         to="/"
-                        className={({ isActive }) => (isActive ? "nav-item active" : "nav-item")}
+                        className={({ isActive }) =>
+                            isActive ? "nav-item active" : "nav-item"
+                        }
                     >
                         Home
                     </NavLink>
                     <NavLink
                         to="/vkms"
-                        className={({ isActive }) => (isActive ? "nav-item active" : "nav-item")}
+                        className={({ isActive }) =>
+                            isActive ? "nav-item active" : "nav-item"
+                        }
                     >
                         VKM's
                     </NavLink>

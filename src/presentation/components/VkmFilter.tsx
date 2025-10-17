@@ -13,8 +13,9 @@ export default function VkmFilter({ onFilterChange }: VkmFilterProps) {
         period: "",
         language: "",
         level: "",
+        search: "",
     });
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         getAllCourses().then(setCourses).catch(console.error);
@@ -30,15 +31,26 @@ export default function VkmFilter({ onFilterChange }: VkmFilterProps) {
 
     return (
         <div className="filter-card">
-            <button
-                className="filter-toggle"
-                onClick={() => setOpen((prev) => !prev)}
-            >
-                {open ? "Filter verbergen" : "Filter tonen"}
-            </button>
+            <div className="filter-header" style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+                <button
+                    className="filter-toggle"
+                    onClick={() => setOpen((prev) => !prev)}
+                >
+                    {open ? "Filters verbergen" : "Filters tonen"}
+                </button>
+
+                <input
+                    className="filter-inputfield"
+                    type="text"
+                    name="search"
+                    placeholder="Zoeken..."
+                    value={filters.search}
+                    onChange={handleChange}
+                />
+            </div>
 
             {open && (
-                <div className="vkm-filter">
+                <div className="vkm-filter" style={{ marginTop: "1rem", display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>
                     <select name="course" value={filters.course} onChange={handleChange}>
                         <option value="">Alle studies</option>
                         {studies.map((s) => (
@@ -57,16 +69,16 @@ export default function VkmFilter({ onFilterChange }: VkmFilterProps) {
 
                     <select name="period" value={filters.period} onChange={handleChange}>
                         <option value="">Alle periodes</option>
-                        <option value="1">Periode 1</option>
-                        <option value="2">Periode 2</option>
-                        <option value="3">Periode 3</option>
-                        <option value="4">Periode 4</option>
+                        <option value="Periode 1">Periode 1</option>
+                        <option value="Periode 2">Periode 2</option>
+                        <option value="Periode 3">Periode 3</option>
+                        <option value="Periode 4">Periode 4</option>
                     </select>
 
                     <select name="language" value={filters.language} onChange={handleChange}>
                         <option value="">Alle talen</option>
-                        <option value="NL">Nederlands</option>
-                        <option value="EN">Engels</option>
+                        <option value="Nederlands">Nederlands</option>
+                        <option value="Engels">Engels</option>
                     </select>
 
                     <select name="level" value={filters.level} onChange={handleChange}>

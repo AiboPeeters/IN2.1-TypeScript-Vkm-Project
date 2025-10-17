@@ -1,5 +1,4 @@
-export interface IVKM {
-    _id: string;
+export interface IVKMCreate {
     name: string;
     shortdescription?: string;
     description?: string;
