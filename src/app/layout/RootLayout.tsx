@@ -1,6 +1,17 @@
 import { Outlet, NavLink } from "react-router-dom";
+import { useState } from "react";
 
 export default function RootLayout() {
+    const [user, setUser] = useState<string | null>("Admin");
+
+    const handleLoginLogout = () => {
+        if (user) {
+            setUser(null);
+        } else {
+            setUser("Admin");
+        }
+    };
+
     return (
         <div className="layout">
             <nav className="navbar">
@@ -22,6 +33,17 @@ export default function RootLayout() {
                     >
                         VKM's
                     </NavLink>
+                </div>
+
+                <div className="user-info" style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: "1rem" }}>
+                    {user ? (
+                        <>
+                            <span>Ingelogd als <strong>{user}</strong></span>
+                            <button onClick={handleLoginLogout} className="detail-btn" style={{ padding: "0.3rem 0.6rem", fontSize: "0.9rem" }}>Logout</button>
+                        </>
+                    ) : (
+                        <button onClick={handleLoginLogout} className="detail-btn" style={{ padding: "0.3rem 0.6rem", fontSize: "0.9rem" }}>Login</button>
+                    )}
                 </div>
             </nav>
 
