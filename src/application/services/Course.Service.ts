@@ -1,11 +1,11 @@
-import { CourseDao } from "../../infrastructure/dao/CourseDao";
+import { ICoursesDomainService } from "../../domain/domain_services/ICourse.DomainService";
 import { ICourse } from "../../domain/interfaces/ICourse";
 
 export class CourseService {
-    private dao: CourseDao;
+    private readonly dao: ICoursesDomainService;
 
-    constructor() {
-        this.dao = new CourseDao();
+    constructor(dao: ICoursesDomainService) {
+        this.dao = dao;
     }
 
     async getAll(): Promise<ICourse[]> {

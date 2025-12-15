@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
-import { ICourse } from "../interfaces/ICourse";
+import { ICourse } from "../../domain/interfaces/ICourse";
 
-const CourseSchema = new Schema<ICourse>(
+const CourseMongooseSchema = new Schema<ICourse>(
     {
         name: { type: String, required: true },
         description: { type: String, required: true },
@@ -11,4 +11,4 @@ const CourseSchema = new Schema<ICourse>(
     { collection: "Course", versionKey: false }
 );
 
-export const Course = model<ICourse>("Course", CourseSchema);
+export const Course = model<ICourse>("Course", CourseMongooseSchema);

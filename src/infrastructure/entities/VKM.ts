@@ -1,15 +1,17 @@
 import { Schema, model } from "mongoose";
-import { IVKM } from "../interfaces/IVKM";
-import { ICourse } from "../interfaces/ICourse";
+import { IVKM } from "../../domain/interfaces/IVKM";
 
-const CourseEmbeddedSchema = new Schema<ICourse>({
+const CourseSubSchema = new Schema({
+    _id: { type: String, required: true }, 
     name: { type: String, required: true },
-    description: { type: String, required: true },
-    durationYears: { type: Number, required: true },
-    location: { type: String, required: true },
-}, { _id: false });
+    description: { type: String },
+    durationYears: { type: Number },
+    location: { type: String },
+}, { 
+    _id: false 
+});
 
-const VKMSchema = new Schema<IVKM>({
+const VKMMongooseSchema = new Schema<IVKM>({
     name: { type: String, required: true },
     shortdescription: { type: String },
     description: { type: String },
@@ -23,7 +25,12 @@ const VKMSchema = new Schema<IVKM>({
     start_date: { type: Date },
     language: { type: String },
     period: { type: String },
-    course: { type: CourseEmbeddedSchema, required: true }
+
+    course: { 
+        type: CourseSubSchema, 
+        required: true 
+    }
+    
 }, { collection: "VKM", versionKey: false });
 
-export const VKM = model<IVKM>("VKM", VKMSchema);
+export const VKM = model<IVKM>("VKM", VKMMongooseSchema);

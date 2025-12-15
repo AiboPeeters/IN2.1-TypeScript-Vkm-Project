@@ -1,8 +1,8 @@
 import express, { Request, Response } from "express";
-import mongoose from "mongoose";
+import { mongoDBConnection } from "./infrastructure/db/db";
 import cors from "cors";
-import VKMRoutes from "./infrastructure/routes/VKMRoutes";
-import CourseRoutes from "./infrastructure/routes/CourseRoutes"
+import VKMRoutes from "./application/routes/VKM.Routes";
+import CourseRoutes from "./application/routes/Course.Routes"
 
 // Create a new express application instance
 const app = express();
@@ -11,23 +11,17 @@ const app = express();
 app.use(express.json());
 
 // CORS middleware toevoegen
-app.use(cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
-}));
+app.use(cors());
 
 // Set the network port
-const port = process.env.PORT || 4600;
+const port = 4600;
 const mongoUri = process.env.MONGODB_URI;
 
 if (!mongoUri) {
     throw new Error("MONGODB_URI is not defined in .env");
 }
-
-// MongoDB connection
-mongoose.connect(mongoUri)
-    .then(() => console.log("MongoDB connected"))
-    .catch((err) => console.error("MongoDB connection error:", err));
+// Connect to MongoDB 
+mongoDBConnection()
 
 // Define the root path with a greeting message
 app.get("/", (req: Request, res: Response) => {
