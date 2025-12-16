@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { CourseService } from '../application/services/Course.Service';
-import { CourseDao } from '../infrastructure/dao/Course.Dao';
+import { CourseService } from '../../application/services/Course.Service';
+import { CourseDao } from '../../infrastructure/dao/Course.Dao';
 
 const courseDao = new CourseDao();
 

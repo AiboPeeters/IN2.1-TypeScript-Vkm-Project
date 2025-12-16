@@ -1,6 +1,6 @@
 import { ICoursesDomainService } from '../../domain/domain_services/ICourse.DomainService';
 import { ICourse } from '../../domain/interfaces/ICourse';
-import { Course } from '../entities/Course';
+import { Course } from '../schema/Course';
 
 export class CourseDao implements ICoursesDomainService {
     async getAll(): Promise<ICourse[]> {

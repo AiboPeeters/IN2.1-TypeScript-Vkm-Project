@@ -1,6 +1,6 @@
 import { IVKMsDomainService } from '../../domain/domain_services/IVKM.DomainService';
 import { IVKM } from '../../domain/interfaces/IVKM';
-import { VKM } from '../entities/VKM';
+import { VKM } from '../schema/VKM';
 
 export class VKMDao implements IVKMsDomainService {
     async getAll(): Promise<IVKM[]> {

@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { mongoDBConnection } from "./infrastructure/db/db";
+import { mongoDBConnection } from "./infrastructure/db_connection/MongoDBConnection";
 import cors from "cors";
 import VKMRoutes from "./application/routes/VKM.Routes";
 import CourseRoutes from "./application/routes/Course.Routes"

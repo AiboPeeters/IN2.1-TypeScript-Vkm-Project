@@ -1,5 +1,5 @@
 import { Router } from "express";
-import * as VKMController from '../../presentation/VKM.Controller';
+import * as VKMController from '../../api/controller/VKM.Controller';
 
 const router = Router();
 

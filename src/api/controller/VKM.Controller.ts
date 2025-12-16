@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { VKMService } from '../application/services/VKM.Service';
-import { VKMDao } from '../infrastructure/dao/VKM.Dao'; 
+import { VKMService } from '../../application/services/VKM.Service';
+import { VKMDao } from '../../infrastructure/dao/VKM.Dao'; 
 
 const vkmDao = new VKMDao();
 
