@@ -77,7 +77,6 @@ export default function VkmCreatePage() {
         }
 
         const newVkm: IVKM = {
-            _id: "",
             name: form.name,
             shortdescription: form.shortdescription,
             description: form.description,

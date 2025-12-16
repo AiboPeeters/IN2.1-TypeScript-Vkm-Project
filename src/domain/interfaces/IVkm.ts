@@ -1,7 +1,7 @@
 import type { ICourse } from "./ICourse";
 
 export interface IVKM {
-  _id: string;
+  _id?: string;
   name: string;
   shortdescription?: string;
   description?: string;
