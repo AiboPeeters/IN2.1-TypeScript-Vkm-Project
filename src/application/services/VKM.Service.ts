@@ -1,11 +1,10 @@
 import { IVKM } from '../../domain/interfaces/IVKM';
 import { IVKMsDomainService } from '../../domain/domain_services/IVKM.DomainService';
-import { ICoursesDomainService } from '../../domain/domain_services/ICourse.DomainService'; 
 
 export class VKMService {
     private readonly vkmDao: IVKMsDomainService;
 
-    constructor(vkmDao: IVKMsDomainService, courseDao: ICoursesDomainService) {
+    constructor(vkmDao: IVKMsDomainService) {
         this.vkmDao = vkmDao;
     }
 
@@ -19,7 +18,7 @@ export class VKMService {
 
     async createVKM(data: IVKM): Promise<IVKM> {
         if (!data.course || !data.course._id) {
-            throw new Error("Ongeldige input: Het volledige 'course' object ontbreekt of is onvolledig.");
+            throw new Error("Invalid input: The complete 'course' object is missing.");
         }
 
         return await this.vkmDao.create(data); 

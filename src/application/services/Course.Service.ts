@@ -2,17 +2,17 @@ import { ICoursesDomainService } from "../../domain/domain_services/ICourse.Doma
 import { ICourse } from "../../domain/interfaces/ICourse";
 
 export class CourseService {
-    private readonly dao: ICoursesDomainService;
+    private readonly courseDao: ICoursesDomainService;
 
-    constructor(dao: ICoursesDomainService) {
-        this.dao = dao;
+    constructor(courseDao: ICoursesDomainService) {
+        this.courseDao = courseDao;
     }
 
     async getAll(): Promise<ICourse[]> {
-        return await this.dao.getAll();
+        return await this.courseDao.getAll();
     }
 
     async getById(id: string): Promise<ICourse | null> {
-        return await this.dao.getById(id);
+        return await this.courseDao.getById(id);
     }
 }

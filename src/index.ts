@@ -7,10 +7,10 @@ import CourseRoutes from "./application/routes/Course.Routes"
 // Create a new express application instance
 const app = express();
 
-// Middleware om JSON body te parsen
+// Middleware to parse JSON body
 app.use(express.json());
 
-// CORS middleware toevoegen
+// CORS middleware
 app.use(cors());
 
 // Set the network port

@@ -1,6 +1,8 @@
 import { Schema, model } from "mongoose";
 import { IVKM } from "../../domain/interfaces/IVKM";
 
+// Sub-schema for the embedded Course document
+
 const CourseSubSchema = new Schema({
     _id: { type: String, required: true }, 
     name: { type: String, required: true },

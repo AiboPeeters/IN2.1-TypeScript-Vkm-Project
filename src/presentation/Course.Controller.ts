@@ -13,9 +13,9 @@ export const getAllCourses = async (
 ): Promise<void> => {
     try {
         const courses = await courseService.getAll();
-        res.json(courses);
+        res.json(courses); // Respond with JSON array of Courses
     } catch (error) {
-        next(error);
+        next(error); // Pass error to Express error handler
     }
 };
 
@@ -28,12 +28,12 @@ export const getCourseById = async (
         const course = await courseService.getById(req.params.id);
 
         if (!course) {
-            res.status(404).json({ message: 'Course not found' });
+            res.status(404).json({ message: 'Course not found' }); // 404 JSON message if not found
             return;
         }
 
         res.json(course);
     } catch (error) {
-        next(error);
+        next(error); // Pass error to Express error handler
     }
 };
