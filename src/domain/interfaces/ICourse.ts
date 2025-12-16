@@ -5,3 +5,4 @@ export interface ICourse {
     durationYears: number;
     location: string;
 }
+

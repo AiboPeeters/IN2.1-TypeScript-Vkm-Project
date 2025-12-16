@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Spinner, Alert } from "react-bootstrap";
-import type { IVKMCreate } from "../../domain/interfaces/IVkmCreate";
 import type { ICourse } from "../../domain/interfaces/ICourse";
+import type { IVKM } from "../../domain/interfaces/IVkm";
 import { getAllCourses } from "../../infrastructure/api/courseApi";
 import { createVkm } from "../../infrastructure/api/vkmApi";
 
@@ -76,7 +76,8 @@ export default function VkmCreatePage() {
             return;
         }
 
-        const newVkm: IVKMCreate = {
+        const newVkm: IVKM = {
+            _id: "",
             name: form.name,
             shortdescription: form.shortdescription,
             description: form.description,
