@@ -47,12 +47,16 @@ export default function VkmEditPage() {
     function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
         const { name, value } = e.target;
         setForm((prev: any) => ({ ...prev, [name]: value }));
-        setValidationErrors((prev) => ({ ...prev, [name]: "" })); // veld-fout resetten
+        setValidationErrors((prev) => ({ ...prev, [name]: "" }));
     }
 
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
         if (!vkm) return;
+        if (!vkm._id) {
+            setError("VKM id ontbreekt");
+            return;
+        }
 
         const errors: { [key: string]: string } = {};
         if (!form.name) errors.name = "Naam is verplicht";
@@ -108,6 +112,11 @@ export default function VkmEditPage() {
 
     async function handleDelete() {
         if (!vkm) return;
+        if (!vkm._id) {
+            setError("VKM id ontbreekt");
+            return;
+        }
+
         const confirm1 = window.confirm("Weet je zeker dat je deze VKM wilt verwijderen?");
         if (!confirm1) return;
         const confirm2 = window.confirm("Dit kan niet ongedaan gemaakt worden. Wil je doorgaan?");
