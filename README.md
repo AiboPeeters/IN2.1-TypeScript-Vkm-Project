@@ -1,0 +1,1 @@
+Een webapp in TypeScript waarmee een student Vrije Keuze Modules (VKM's) kan bekijken opzoeken en filteren.
